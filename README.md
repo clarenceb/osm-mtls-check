@@ -155,15 +155,15 @@ The selected chipher suite was `TLS_AES_128_GCM_SHA256 (0x1301)`.
 
 Follow the TCP stream and you will see that the messages exchnaged are encrypted:
 
-![Follow TLS TCP stream](img/follow-tcp-stream-tls.png "Follow TLS TCP stream")
+![Follow TLS TCP stream](img/follow-tcp-stream-tls-1.png "Follow TLS TCP stream")
 
 ![Follow TLS TCP stream encrypted](img/follow-tcp-stream-tls-2.png "Follow TLS TCP stream encrypted")
 
-Since the protocol used is TLSv1.3, it is not straight-forward to decrypt the messages as it mandates [Perfect Forward Secrecy](https://en.wikipedia.org/wiki/Forward_secrecy) (PFS).  Previously, you could extract the RSA private keys (for the client and server envoy proxies).  With PFS, a unique session key is generated for each individual session.  This means that even if you have the private key you cannot decrypt conversations.  You would also need the individual session key (out of scope for this demo) but that will not allow you to decrypt previous converations.
+Since the protocol used is TLSv1.3, it is not straight-forward to decrypt the messages as TLSv1.3 mandates [Perfect Forward Secrecy](https://en.wikipedia.org/wiki/Forward_secrecy) (PFS).  Previously, you could extract the RSA private keys (for the client and server envoy proxies).  With PFS, a unique session key is generated for each individual session.  This means that even if you have the private key you cannot decrypt conversations.  You would also need the individual session key (out of scope for this demo) but that will not allow you to decrypt previous converations.
 
 For our purposes in this demo, we can be assured that the communications are encrypted between the services.
 
-If we remove any applied filter in Wireshark, we can see the comms using the pod IP addresses and then we have a number of calls with source and destination IPs of `localhost`.  These `localhost` calls are from/to the `envoy` proxy.  Traffic from/to the `envoy` proxy is within the same pod and is unencrypted.
+If we remove any applied filter in Wireshark, we can first see the comms using the pod IP addresses and then we have a number of calls with source and destination IPs of `localhost`.  These `localhost` calls are from/to the `envoy` proxy.  Traffic from/to the `envoy` proxy is within the same pod and is unencrypted.
 
 See the unencrypted HTTP calls between the `envoy` proxy and the `httpbin` container:
 
