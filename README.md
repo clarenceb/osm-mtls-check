@@ -28,12 +28,6 @@ wireshark
 
 ![wireshark](img/wireshark.png "Wireshark")
 
-* yq
-
-```sh
-pip3 install yq
-```
-
 Notes
 -----
 
@@ -182,5 +176,4 @@ References
 
 * [Verifying Service Mesh TLS in Kubernetes, Using ksniff and Wireshark](https://blog.getambassador.io/verifying-service-mesh-tls-in-kubernetes-using-ksniff-and-wireshark-454b1e3f4dc9)
 * [OSM ports](https://release-v0-11.docs.openservicemesh.io/docs/guides/app_onboarding/prereqs/#ports)
-* [yq](https://kislyuk.github.io/yq/) - yq: Command-line YAML/XML/TOML processor
 * [Decoding TLS v1.2 Protocol Handshake With Wireshark](https://www.thesecmaster.com/decoding-tls-v1-2-protocol-handshake-with-wireshark/)
